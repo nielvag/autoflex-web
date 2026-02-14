@@ -19,8 +19,12 @@ export const productsApi = baseApi.injectEndpoints({
             ]
           : [{ type: "Products", id: "LIST" }],
     }),
+    createProduct: builder.mutation<boolean, Omit<Product, "id">>({
+      query: (body) => ({ url: "/products", method: "POST", body }),
+      invalidatesTags: [{ type: "Products", id: "LIST" }],
+    }),
   }),
   overrideExisting: false,
 });
 
-export const { useGetProductsQuery } = productsApi;
+export const { useGetProductsQuery, useCreateProductMutation } = productsApi;

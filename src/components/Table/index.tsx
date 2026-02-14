@@ -1,6 +1,6 @@
 import type { TableProps } from "./types";
 import { flexRender } from "@tanstack/react-table";
-import SpinnerIcon from "../../assets/icons/spinner.svg?react";
+import LoadingSpinner from "../LoadingSpinner";
 
 export function Table<T>({ table, isLoading }: TableProps<T>) {
   return (
@@ -57,7 +57,7 @@ export function Table<T>({ table, isLoading }: TableProps<T>) {
         </div>
       ) : isLoading ? (
         <div className="flex justify-center items-center">
-          <SpinnerIcon className="text-primary w-14 h-14" />
+          <LoadingSpinner />
         </div>
       ) : (
         <div className="flex flex-col justify-center items-center">
