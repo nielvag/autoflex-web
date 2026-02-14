@@ -80,7 +80,7 @@ export default function MainLayout({
           </div>
         </header>
 
-        <main className="w-full px-4 py-6">{children}</main>
+        <main className="h-full w-full">{children}</main>
       </div>
 
       {/* Drawer mobile (<md) */}
