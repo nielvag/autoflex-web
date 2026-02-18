@@ -6,7 +6,7 @@ export function Table<T>({ table, isLoading }: TableProps<T>) {
   return (
     <>
       {table.getRowCount() > 0 ? (
-        <div className="border border-gray-200 rounded-lg">
+        <div className="border border-gray-200 rounded-lg overflow-auto">
           <div className="overflow-x-auto rounded-lg">
             <table className="w-full">
               <thead className="w-full bg-black">
@@ -17,6 +17,7 @@ export function Table<T>({ table, isLoading }: TableProps<T>) {
                         <th
                           key={header.id}
                           className="py-4 px-4 bg-[#F8F8F8] text-base"
+                          style={{ width: header.column.getSize() }}
                         >
                           {header.isPlaceholder
                             ? null
@@ -32,19 +33,18 @@ export function Table<T>({ table, isLoading }: TableProps<T>) {
               </thead>
               <tbody className="text-black" data-cy="table-body">
                 {table.getRowModel().rows.map((row) => (
-                  <tr
-                    key={row.id}
-                    className={`group/row 
-                      ${row.getIsSelected() ? "bg-cellSelected" : ""} 
-                      `}
-                  >
+                  <tr key={row.id}>
                     {row.getVisibleCells().map((cell) => {
                       const cellContent = flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext(),
                       );
                       return (
-                        <td key={cell.id} className="py-4 px-4 group/cell">
+                        <td
+                          key={cell.id}
+                          className="py-4 px-4"
+                          style={{ width: cell.column.getSize() }}
+                        >
                           {cellContent}
                         </td>
                       );

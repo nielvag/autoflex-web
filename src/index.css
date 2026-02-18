@@ -5,3 +5,13 @@
     cursor: pointer;
   }
 }
+
+@layer components {
+  .input {
+    @apply border border-gray-400 rounded-md px-2 py-1 max-w-64;
+  }
+
+  .input-label {
+    @apply text-base font-medium text-gray-700;
+  }
+}

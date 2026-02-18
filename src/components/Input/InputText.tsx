@@ -9,7 +9,7 @@ interface InputProps extends React.DetailedHTMLProps<
   labelClassName?: string;
 }
 
-export default function Input({
+export default function InputText({
   className,
   label,
   labelClassName,
@@ -18,23 +18,12 @@ export default function Input({
   return (
     <div className="flex flex-col gap-1">
       {label && (
-        <span
-          className={mergeClassnames(
-            "text-base font-medium text-gray-700",
-            labelClassName,
-          )}
-        >
+        <span className={mergeClassnames("input-label", labelClassName)}>
           {label}
         </span>
       )}
 
-      <input
-        {...props}
-        className={mergeClassnames(
-          "border border-gray-400 rounded-md px-2 py-1 max-w-64",
-          className,
-        )}
-      />
+      <input {...props} className={mergeClassnames("input", className)} />
     </div>
   );
 }

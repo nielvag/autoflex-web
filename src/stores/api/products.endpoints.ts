@@ -19,12 +19,51 @@ export const productsApi = baseApi.injectEndpoints({
             ]
           : [{ type: "Products", id: "LIST" }],
     }),
+
+    getProduct: builder.query<Product, string | undefined>({
+      query: (id) => `/products/${id}`,
+
+      providesTags: (result) => [{ type: "Products", id: result?.id }],
+    }),
+
     createProduct: builder.mutation<boolean, Omit<Product, "id">>({
       query: (body) => ({ url: "/products", method: "POST", body }),
-      invalidatesTags: [{ type: "Products", id: "LIST" }],
+      invalidatesTags: [{ type: "Products", id: "LIST" }, "ProductionPlan"],
+    }),
+
+    editProduct: builder.mutation<
+      Product,
+      { id: string; data: Omit<Product, "id"> }
+    >({
+      query: (payload) => {
+        return {
+          url: `/products/${payload.id}`,
+          method: "PATCH",
+          body: payload.data,
+        };
+      },
+      invalidatesTags: (_res, _err, arg) => [
+        { type: "Products", id: arg.id },
+        "ProductionPlan",
+      ],
+    }),
+
+    deleteProduct: builder.mutation<{ deleted: boolean }, string>({
+      query: (id) => ({ url: `/products/${id}`, method: "DELETE" }),
+      invalidatesTags: (_res, _err, arg) => [
+        { type: "Products", id: arg },
+        { type: "Products", id: "LIST" },
+        "ProductionPlan",
+      ],
     }),
   }),
   overrideExisting: false,
 });
 
-export const { useGetProductsQuery, useCreateProductMutation } = productsApi;
+export const {
+  useGetProductsQuery,
+  useGetProductQuery,
+  useCreateProductMutation,
+  useEditProductMutation,
+  useDeleteProductMutation,
+} = productsApi;

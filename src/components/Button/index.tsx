@@ -15,6 +15,7 @@ export default function Button({ className, variant, ...props }: ButtonProps) {
       className={mergeClassnames(
         "border border-gray-400 rounded-md px-2 py-1 max-w-64",
         variant === "primary" ? "bg-gray-900 text-gray-200" : "",
+        props.disabled ? "opacity-40 cursor-not-allowed" : "",
         className,
       )}
     />
