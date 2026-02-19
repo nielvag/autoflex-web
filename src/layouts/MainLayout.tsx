@@ -36,7 +36,12 @@ export default function MainLayout({
           </Link>
 
           <nav className="flex flex-col gap-2 text-sm">
-            <NavLink to="/products" className={navClass} title="Produtos">
+            <NavLink
+              to="/products"
+              className={navClass}
+              title="Produtos"
+              data-testid="products-menu-item-desktop"
+            >
               <ProductIcon className="w-6" />
               Produtos
             </NavLink>
@@ -124,6 +129,7 @@ export default function MainLayout({
             className={navClass}
             title="Produtos"
             onClick={() => setMobileOpen(false)}
+            data-testid="products-menu-item-mobile"
           >
             <ProductIcon className="w-6" />
             Produtos

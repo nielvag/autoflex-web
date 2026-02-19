@@ -59,7 +59,12 @@ export default function ProductDetailsModal({
   };
 
   return (
-    <Modal open={open} onClose={onClose} title="Detalhes do Produto">
+    <Modal
+      open={open}
+      onClose={onClose}
+      title="Detalhes do Produto"
+      data-testid="details-product-modal"
+    >
       <div className="flex flex-col max-h-[70vh]">
         <ul>
           <li>
@@ -93,6 +98,7 @@ export default function ProductDetailsModal({
                 })) || []
               }
               triggerClassName="text-sm h-9.5"
+              data-testid="select-raw-material"
             />
             <InputNumber
               className="w-28 text-sm h-9.5"
@@ -101,6 +107,7 @@ export default function ProductDetailsModal({
               onValueChange={(value) => setRawMaterialQuantity(value.value)}
               decimalScale={3}
               decimalSeparator=","
+              data-testid="raw-material-quantity-input"
             />
             <Button
               className="flex items-center gap-2 text-sm font-medium"
@@ -112,6 +119,7 @@ export default function ProductDetailsModal({
                 isLoadingPRM ||
                 isLoading
               }
+              data-testid="add-product-raw-material"
             >
               <PlusIcon className="w-4" />
               Adicionar / Alterar

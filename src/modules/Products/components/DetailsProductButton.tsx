@@ -11,7 +11,10 @@ export default function DetailsProductButton({
 
   return (
     <>
-      <button onClick={() => setModalOpen((prev) => !prev)}>
+      <button
+        onClick={() => setModalOpen((prev) => !prev)}
+        data-testid="open-product-details-btn"
+      >
         <ChevroRightIcon className="w-5" />
       </button>
 

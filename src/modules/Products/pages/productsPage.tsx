@@ -26,6 +26,7 @@ export default function ProductsPage() {
         <button
           className="flex items-center gap-2 text-sm bg-gray-700 hover:bg-gray-600 px-3 py-2 rounded-lg text-gray-200"
           onClick={() => navigate("/new-product")}
+          data-testid="new-product-btn"
         >
           <PlusIcon className="w-3.5" />
           Novo Produto

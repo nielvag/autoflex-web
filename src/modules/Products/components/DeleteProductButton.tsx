@@ -13,7 +13,11 @@ export default function DeleteProductButton({ product }: { product: Product }) {
     }
   };
   return (
-    <button onClick={deleteProduct} disabled={isLoading}>
+    <button
+      onClick={deleteProduct}
+      disabled={isLoading}
+      data-testid="delete-product-btn"
+    >
       <TrashIcon className="w-5" />
     </button>
   );

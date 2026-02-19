@@ -9,7 +9,10 @@ export default function EditProductButton({
   const navigate = useNavigate();
 
   return (
-    <button onClick={() => navigate(`/products/${productId}`)}>
+    <button
+      onClick={() => navigate(`/products/${productId}`)}
+      data-testid="edit-product-btn"
+    >
       <EditIcon className="w-5" />
     </button>
   );

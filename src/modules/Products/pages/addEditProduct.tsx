@@ -90,12 +90,14 @@ export default function AddEditProductPage() {
             {...register("code", {
               required: "Código é obrigatório",
             })}
+            data-testid="product-code-input"
           />
           <InputText
             label="Nome*"
             {...register("name", {
               required: "Nome é obrigatório",
             })}
+            data-testid="product-name-input"
           />
           <InputNumber
             label="Preço*"
@@ -105,6 +107,7 @@ export default function AddEditProductPage() {
             onValueChange={(values) => {
               setValue("price", values.value);
             }}
+            data-testid="product-price-input"
           />
           {errorMessage && (
             <span className="text-red-800 text-sm">{errorMessage}</span>
@@ -116,6 +119,7 @@ export default function AddEditProductPage() {
           className="max-w-64"
           variant="primary"
           disabled={isCreating}
+          data-testid="send-product-button"
         >
           {isCreating || (isEditing && <LoadingSpinner />)}
           Enviar
