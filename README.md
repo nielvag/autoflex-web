@@ -21,6 +21,7 @@ Este projeto consome a **Autoflex API** desenvolvida em NestJS.
 - **RTK Query**
 - **React Hook Form**
 - **Yup**
+- **Cypress (Testes E2E)**
 - **Fetch via RTK Query**
 
 ---
@@ -30,6 +31,7 @@ Este projeto consome a **Autoflex API** desenvolvida em NestJS.
 - Node.js (v18+ recomendado)
 - NPM ou Yarn
 - Autoflex API rodando
+- Banco de dados configurado
 
 ---
 
@@ -68,6 +70,65 @@ Preview da build:
 ```bash
 npm run preview
 ```
+
+---
+
+# 🧪 Testes End-to-End (E2E)
+
+O projeto utiliza **Cypress** para testes automatizados de interface.
+
+## 📁 Estrutura
+
+```
+cypress/
+  e2e/
+  support/
+  fixtures/
+```
+
+---
+
+## ▶️ Rodar Cypress em modo interativo
+
+```bash
+npm run cy:open
+```
+
+ou
+
+```bash
+npx cypress open
+```
+
+---
+
+## ▶️ Rodar Cypress em modo headless
+
+```bash
+npm run cy:run
+```
+
+ou
+
+```bash
+npx cypress run
+```
+
+---
+
+## 📌 Requisitos para rodar testes
+
+Antes de executar os testes:
+
+1. A aplicação deve estar rodando (`npm run dev`)
+2. A Autoflex API deve estar ativa
+3. O endpoint de reset de banco para testes deve estar disponível (ex: `/test/reset`)
+
+---
+
+## ✅ O que está sendo testado
+
+- Criação de produto
 
 ---
 
@@ -120,6 +181,7 @@ Principais vantagens:
 ✅ Plano de Produção
 ✅ Validação de formulários
 ✅ Tratamento de erros amigáveis
+✅ Testes End-to-End com Cypress (Apenas criação de produto)
 
 ---
 
@@ -127,12 +189,11 @@ Principais vantagens:
 
 - Paginação
 - Autenticação
-- adição de mais mensagens com feedback
+- Adição de mais mensagens com feedback
+- Integração com CI para rodar testes automaticamente
 
 ---
 
 # 👨‍💻 Autor
 
 Desenvolvido por **Nielson Vágno**
-
----
